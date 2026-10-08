@@ -330,6 +330,9 @@
   .pix-copy{ display:flex; margin-top:14px; border:1.5px solid var(--charcoal); }
   .pix-copy input{ flex:1; min-width:0; border:none; background:none; padding:0 10px; font-size:12px; color:var(--charcoal); }
   .pix-copy .btn{ padding:12px 18px; border-radius:0; border:none; }
+  .pix-key{ margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:4px; font-size:12px; color:var(--charcoal-soft); }
+  .pix-key strong{ font-size:17px; color:var(--charcoal); letter-spacing:.04em; }
+  .pix-key .btn{ margin-top:6px; padding:10px 18px; }
   .pix-meta{ font-size:12px; color:var(--charcoal-soft); margin-top:14px; }
   .pix-cancel{ background:none; border:none; color:var(--charcoal-soft); font-size:12px; text-decoration:underline; margin-top:10px; }
   .pix-cancel:hover{ color:var(--charcoal); }
@@ -668,6 +671,7 @@
     <div class="pix-qr" id="pixQr"></div>
     <p class="pix-hint">Abra o app do seu banco, escolha Pix e leia o QR Code — ou use o código copia e cola.</p>
     <div class="pix-copy"><input id="pixCode" readonly aria-label="Pix copia e cola"><button class="btn btn--solid" id="pixCopy">Copiar</button></div>
+    <div class="pix-key"><span>Chave Pix (telefone)</span><strong id="pixKey"></strong><button class="btn btn--ghost" id="pixKeyCopy">Copiar chave</button></div>
     <p class="pix-meta">Pedido <strong id="pixOrder"></strong> · reserva válida por 30 minutos</p>
     <button class="pix-cancel" id="pixCancel">Cancelar pedido</button>
   </div>
@@ -754,9 +758,10 @@ const PRODUCTS = [
 ];
 
 /* ---------- Configuração (preencha) ---------- */
-const SUPABASE_URL = 'https://SEU-PROJETO.supabase.co';
-const SUPABASE_KEY = 'SUA_CHAVE_PUBLICA_ANON';
-const PIX_KEY    = '';                 // sua chave Pix (CPF/CNPJ, e-mail, telefone +55... ou aleatória)
+const SUPABASE_URL = 'https://wmwoxzmdbpedcxgceuae.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_XGp7WkOGPYtnCH0_zV0OvQ_BURmyhiG';
+const PIX_KEY    = '+5521995117813';   // chave Pix (telefone precisa do +55 no código do QR)
+const PIX_KEY_TXT = '21995117813';     // como a chave aparece para o cliente
 const PIX_NOME   = 'THEOSIS COMPANY';  // até 25 caracteres
 const PIX_CIDADE = 'RIO DE JANEIRO';   // até 15 caracteres
 
@@ -1001,6 +1006,7 @@ function showPix(o){
   document.getElementById('pixQr').innerHTML = qr.createSvgTag({ cellSize:4, margin:2, scalable:true });
   document.getElementById('pixTotal').textContent = brl(Number(o.total));
   document.getElementById('pixCode').value = code;
+  document.getElementById('pixKey').textContent = PIX_KEY_TXT;
   document.getElementById('pixOrder').textContent = '#' + o.pedido_id.slice(0, 8).toUpperCase();
   pixModal.classList.add('open');
 }
@@ -1010,6 +1016,12 @@ document.getElementById('pixCopy').addEventListener('click', async () => {
   try{ await navigator.clipboard.writeText(input.value); }
   catch(e){ input.select(); document.execCommand('copy'); }
   showToast('Código Pix copiado');
+});
+
+document.getElementById('pixKeyCopy').addEventListener('click', async () => {
+  try{ await navigator.clipboard.writeText(PIX_KEY_TXT); }
+  catch(e){ const t = document.createElement('textarea'); t.value = PIX_KEY_TXT; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
+  showToast('Chave Pix copiada');
 });
 
 document.getElementById('pixCancel').addEventListener('click', async () => {
