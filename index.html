@@ -902,23 +902,29 @@ async function tokenValido(){
 }
 async function rpc(fn, args){ return chamar('/rest/v1/rpc/' + fn, args, await tokenValido()); }
 
-/* p.stock: null = ainda consultando / indisponível; 0 = esgotado */
+/* p.stock: null = ainda consultando ou indisponível; 0 = esgotado */
+PRODUCTS.forEach(p => { if(p.stock === undefined) p.stock = null; });
+let estoqueFalhou = false;
+const fotoEstoque = () => PRODUCTS.map(p => String(p.stock)).join() + estoqueFalhou;
 async function loadStock(){
-  const antes = PRODUCTS.map(p => p.stock).join();
+  const antes = fotoEstoque();
   try{
     const map = {};
     (await rpc('ver_estoque')).forEach(r => { map[r.sku] = r.stock; });
     PRODUCTS.forEach(p => { p.stock = (p.sku in map) ? map[p.sku] : null; });
+    estoqueFalhou = false;
   }catch(e){
+    console.error('estoque:', e.message);   // F12 > Console mostra o motivo
+    estoqueFalhou = true;
     PRODUCTS.forEach(p => { p.stock = null; });
   }
   cart = cart.map(i => ({ id:i.id, qty:Math.min(i.qty, PRODUCTS[i.id].stock ?? i.qty) })).filter(i => i.qty > 0);
   renderBag();
-  if(PRODUCTS.map(p => p.stock).join() !== antes) renderGrid(document.querySelector('.filter-btn.active').dataset.filter);
+  if(fotoEstoque() !== antes) renderGrid(document.querySelector('.filter-btn.active').dataset.filter);
 }
 
 function stockLabel(p){
-  if(p.stock === null) return 'Consultando estoque…';
+  if(p.stock === null) return estoqueFalhou ? 'Estoque indisponível no momento' : 'Consultando estoque…';
   if(p.stock === 0) return 'Esgotado';
   if(p.stock <= 3) return 'Últimas ' + (p.stock === 1 ? 'unidade' : p.stock + ' unidades');
   return 'Restam ' + p.stock + ' unidades';
