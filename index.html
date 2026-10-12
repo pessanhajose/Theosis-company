@@ -1242,7 +1242,8 @@ function traduzir(m){
   if(/rate limit|too many|seconds/i.test(m)) return 'Muitas tentativas. Aguarde um instante e tente de novo.';
   if(/different from the old/i.test(m)) return 'Escolha uma senha diferente da anterior.';
   if(/password/i.test(m)) return 'A senha precisa ter ao menos 8 caracteres.';
-  return 'Não foi possível concluir. Tente novamente.';
+  console.error('auth:', m);
+  return 'Não foi possível concluir. Detalhe: ' + m;   // ponytail: mostra o erro real enquanto você configura; depois dá para voltar à frase genérica
 }
 function claims(){
   try{ return JSON.parse(atob(sessao.access_token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))); }catch(e){ return {}; }
