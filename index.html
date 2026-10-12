@@ -92,7 +92,7 @@
   }
 
   .icon-actions{ display:flex; align-items:center; gap:18px; }
-  .search-toggle, .bag-btn, .menu-toggle{
+  .search-toggle, .bag-btn, .menu-toggle, .account-btn{
     background:none; border:none; color:var(--charcoal); position:relative;
     display:flex; align-items:center; justify-content:center; width:34px; height:34px;
   }
@@ -321,7 +321,7 @@
   /* ===== Pix ===== */
   .pix-overlay{ position:fixed; inset:0; z-index:300; background:rgba(37,37,37,.6); display:none; align-items:center; justify-content:center; padding:20px; }
   .pix-overlay.open{ display:flex; }
-  .pix-box{ position:relative; background:var(--paper); width:380px; max-width:100%; max-height:100%; overflow-y:auto; padding:30px 26px 24px; border-radius:2px; text-align:center; }
+  .pix-box{ position:relative; background:var(--paper); width:780px; max-width:100%; max-height:100%; overflow-y:auto; padding:30px 26px 24px; border-radius:2px; text-align:center; }
   .pix-x{ position:absolute; top:12px; right:12px; }
   .pix-box h3{ font-family:var(--font-display); text-transform:uppercase; font-size:22px; letter-spacing:.03em; }
   .pix-total{ font-size:26px; font-weight:800; margin-top:6px; }
@@ -333,6 +333,48 @@
   .pix-key{ margin-top:14px; display:flex; flex-direction:column; align-items:center; gap:4px; font-size:12px; color:var(--charcoal-soft); }
   .pix-key strong{ font-size:17px; color:var(--charcoal); letter-spacing:.04em; }
   .pix-key .btn{ margin-top:6px; padding:10px 18px; }
+  .account-btn.logged::after{ content:""; position:absolute; top:3px; right:3px; width:9px; height:9px; border-radius:50%; background:#2E9B57; border:2px solid var(--paper); }
+  .auth-overlay{ position:fixed; inset:0; z-index:310; background:rgba(37,37,37,.6); display:none; align-items:center; justify-content:center; padding:20px; }
+  .auth-overlay.open{ display:flex; }
+  .auth-box{ position:relative; background:var(--paper); width:400px; max-width:100%; max-height:100%; overflow-y:auto; padding:30px 26px 24px; border-radius:2px; }
+  .admin-box{ width:720px; }
+  .auth-x{ position:absolute; top:12px; right:12px; }
+  .auth-box h3{ font-family:var(--font-display); text-transform:uppercase; font-size:22px; letter-spacing:.03em; margin-bottom:14px; }
+  .auth-view{ display:none; flex-direction:column; gap:12px; }
+  .auth-view.on{ display:flex; }
+  .auth-view label{ display:flex; flex-direction:column; gap:5px; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--charcoal-soft); }
+  .auth-view input{ border:1.5px solid var(--charcoal); padding:12px; font-size:15px; font-family:inherit; color:var(--charcoal); background:#fff; text-transform:none; letter-spacing:0; font-weight:400; }
+  .auth-view .btn{ justify-content:center; }
+  .auth-view .btn:disabled{ opacity:.6; }
+  .auth-err{ color:#C62828; font-size:13px; line-height:1.45; margin-bottom:10px; }
+  .auth-err:empty{ display:none; }
+  .auth-note{ font-size:12.5px; color:var(--charcoal-soft); line-height:1.5; }
+  .auth-alt{ font-size:13px; text-align:center; color:var(--charcoal-soft); }
+  .auth-alt a{ color:var(--charcoal); text-decoration:underline; }
+  .admin-tabs{ display:flex; gap:8px; margin-bottom:14px; }
+  .admin-tabs button{ border:1.5px solid var(--charcoal); background:none; padding:9px 16px; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--charcoal); }
+  .admin-tabs button.on{ background:var(--charcoal); color:var(--paper); }
+  .ad-row{ display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--charcoal-14); }
+  .ad-name{ flex:1; font-size:14px; font-weight:600; }
+  .ad-name small{ display:block; font-weight:400; color:var(--charcoal-soft); font-size:12px; margin-top:2px; }
+  .ad-row input{ width:90px; border:1.5px solid var(--charcoal); padding:9px; font-size:14px; }
+  .ad-row .btn, .ad-actions .btn{ padding:10px 14px; font-size:12px; }
+  #adFiltro{ border:1.5px solid var(--charcoal); padding:9px; margin-bottom:12px; font-size:14px; background:#fff; }
+  .ad-order{ border:1px solid var(--charcoal-14); padding:12px; margin-bottom:10px; font-size:13.5px; line-height:1.55; }
+  .ad-total{ font-weight:800; font-size:16px; margin-top:4px; }
+  .ad-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .pix-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+  .pix-summary{ text-align:left; border-left:1px solid var(--charcoal-14); padding-left:28px; }
+  .pix-summary h4{ font-family:var(--font-display); text-transform:uppercase; font-size:18px; letter-spacing:.03em; }
+  .pix-items{ list-style:none; padding:0; margin:12px 0 0; }
+  .pix-items li{ display:flex; justify-content:space-between; gap:12px; font-size:14px; padding:9px 0; border-bottom:1px solid var(--charcoal-14); }
+  .pix-sum-total{ display:flex; justify-content:space-between; font-size:18px; margin-top:12px; }
+  .pix-cliente{ font-size:13px; color:var(--charcoal-soft); margin-top:14px; line-height:1.5; }
+  .pix-summary .pix-meta, .pix-summary .pix-cancel{ display:block; text-align:left; padding:0; }
+  @media (max-width:720px){
+    .pix-grid{ grid-template-columns:1fr; gap:20px; }
+    .pix-summary{ border-left:none; padding-left:0; border-top:1px solid var(--charcoal-14); padding-top:18px; }
+  }
   .pix-pending{ display:none; position:fixed; left:16px; bottom:16px; z-index:250; background:var(--charcoal); color:var(--paper); border:none; padding:13px 18px; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; box-shadow:0 6px 20px rgba(0,0,0,.3); }
   .pix-pending.show{ display:block; }
   .pix-meta{ font-size:12px; color:var(--charcoal-soft); margin-top:14px; }
@@ -457,6 +499,9 @@
       </a>
 
       <div class="icon-actions">
+        <button class="account-btn" id="accountBtn" aria-label="Minha conta" title="Entrar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </button>
         <button class="search-toggle" id="searchToggle" aria-label="Buscar">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </button>
@@ -665,17 +710,95 @@
 
 <div class="pix-overlay" id="pixModal" role="dialog" aria-modal="true" aria-label="Pagamento via Pix">
   <div class="pix-box">
-    <button class="bag-drawer__close pix-x" id="pixClose" aria-label="Fechar">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <h3>Pague com Pix</h3>
-    <div class="pix-total" id="pixTotal"></div>
-    <div class="pix-qr" id="pixQr"></div>
-    <p class="pix-hint">Abra o app do seu banco, escolha Pix e leia o QR Code — ou use o código copia e cola.</p>
-    <div class="pix-copy"><input id="pixCode" readonly aria-label="Pix copia e cola"><button class="btn btn--solid" id="pixCopy">Copiar</button></div>
-    <div class="pix-key"><span>Chave Pix (telefone)</span><strong id="pixKey"></strong><button class="btn btn--ghost" id="pixKeyCopy">Copiar chave</button></div>
-    <p class="pix-meta">Pedido <strong id="pixOrder"></strong> · reserva válida por 30 minutos</p>
-    <button class="pix-cancel" id="pixCancel">Cancelar pedido</button>
+    <button class="bag-drawer__close pix-x" id="pixClose" aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div class="pix-grid">
+      <div class="pix-main">
+        <h3>Pague com Pix</h3>
+        <div class="pix-total" id="pixTotal"></div>
+        <div class="pix-qr" id="pixQr"></div>
+        <p class="pix-hint">Abra o app do seu banco, escolha Pix e leia o QR Code — ou use o código copia e cola.</p>
+        <div class="pix-copy"><input id="pixCode" readonly aria-label="Pix copia e cola"><button class="btn btn--solid" id="pixCopy">Copiar</button></div>
+        <div class="pix-key"><span>Chave Pix (telefone)</span><strong id="pixKey"></strong><button class="btn btn--ghost" id="pixKeyCopy">Copiar chave</button></div>
+      </div>
+      <aside class="pix-summary" aria-label="Resumo da compra">
+        <h4>Resumo da compra</h4>
+        <ul class="pix-items" id="pixItems"></ul>
+        <div class="pix-sum-total"><span>Total</span><strong id="pixSumTotal"></strong></div>
+        <p class="pix-cliente" id="pixCliente"></p>
+        <p class="pix-meta">Pedido <strong id="pixOrder"></strong> · reserva válida por 30 minutos</p>
+        <button class="pix-cancel" id="pixCancel">Cancelar pedido</button>
+      </aside>
+    </div>
+  </div>
+</div>
+
+<div class="auth-overlay" id="authModal" role="dialog" aria-modal="true" aria-label="Minha conta">
+  <div class="auth-box">
+    <button class="bag-drawer__close auth-x" id="authClose" aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3 id="authTitle">Entrar</h3>
+    <p class="auth-err" id="authErr" role="alert"></p>
+
+    <form class="auth-view" id="vLogin">
+      <label>E-mail<input type="email" id="lEmail" autocomplete="email" required></label>
+      <label>Senha<input type="password" id="lSenha" autocomplete="current-password" required></label>
+      <button class="btn btn--solid" type="submit">Continuar</button>
+      <p class="auth-note">Por segurança, enviaremos um código de confirmação para o seu e-mail.</p>
+      <p class="auth-alt"><a href="#" data-auth="esqueci">Esqueci minha senha</a></p>
+      <p class="auth-alt">Ainda não tem conta? <a href="#" data-auth="cadastro">Criar conta</a></p>
+    </form>
+
+    <form class="auth-view" id="vEsqueci">
+      <p class="auth-note">Informe o e-mail da sua conta. Enviaremos um código para você criar uma nova senha.</p>
+      <label>E-mail<input type="email" id="eEmail" autocomplete="email" required></label>
+      <button class="btn btn--solid" type="submit">Enviar código</button>
+      <p class="auth-alt"><a href="#" data-auth="login">Voltar</a></p>
+    </form>
+
+    <form class="auth-view" id="vRedefinir">
+      <p class="auth-note" id="rDica"></p>
+      <label>Código recebido por e-mail<input type="text" id="rCodigo" inputmode="numeric" autocomplete="one-time-code" maxlength="10" required></label>
+      <label>Nova senha (mínimo 8 caracteres)<input type="password" id="rSenha" autocomplete="new-password" minlength="8" required></label>
+      <label>Repita a nova senha<input type="password" id="rSenha2" autocomplete="new-password" minlength="8" required></label>
+      <button class="btn btn--solid" type="submit">Salvar nova senha</button>
+      <p class="auth-alt"><a href="#" id="rReenviar">Reenviar código</a> · <a href="#" data-auth="login">Voltar</a></p>
+    </form>
+
+    <form class="auth-view" id="vCadastro">
+      <label>Nome<input type="text" id="cNome" autocomplete="name" maxlength="80" required></label>
+      <label>E-mail<input type="email" id="cEmail" autocomplete="email" required></label>
+      <label>WhatsApp (com DDD)<input type="tel" id="cTel" autocomplete="tel-national" placeholder="(21) 99999-9999" required></label>
+      <label>Senha (mínimo 8 caracteres)<input type="password" id="cSenha" autocomplete="new-password" minlength="8" required></label>
+      <p class="auth-note">Usamos seu WhatsApp para avisar que o pagamento do pedido foi confirmado.</p>
+      <button class="btn btn--solid" type="submit">Criar conta</button>
+      <p class="auth-alt">Já tem conta? <a href="#" data-auth="login">Entrar</a></p>
+    </form>
+
+    <form class="auth-view" id="vCodigo">
+      <p class="auth-note" id="cDica"></p>
+      <label>Código recebido por e-mail<input type="text" id="cCodigo" inputmode="numeric" autocomplete="one-time-code" maxlength="10" required></label>
+      <button class="btn btn--solid" type="submit">Confirmar e entrar</button>
+      <p class="auth-alt"><a href="#" id="cReenviar">Reenviar código</a> · <a href="#" data-auth="login">Voltar</a></p>
+    </form>
+
+    <div class="auth-view" id="vConta">
+      <strong id="aNome"></strong>
+      <p class="auth-note" id="aInfo"></p>
+      <button class="btn btn--solid" id="aAdmin" type="button" hidden>Painel do dono</button>
+      <button class="btn btn--ghost" id="aSair" type="button">Sair</button>
+    </div>
+  </div>
+</div>
+
+<div class="auth-overlay" id="adminModal" role="dialog" aria-modal="true" aria-label="Painel do dono">
+  <div class="auth-box admin-box">
+    <button class="bag-drawer__close auth-x" id="adminClose" aria-label="Fechar"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <h3>Painel do dono</h3>
+    <div class="admin-tabs"><button class="on" data-tab="estoque" type="button">Estoque</button><button data-tab="pedidos" type="button">Pedidos</button></div>
+    <div id="adEstoque"></div>
+    <div id="adPedidos" hidden>
+      <select id="adFiltro" aria-label="Filtrar pedidos"><option value="pendente">Pendentes</option><option value="pago">Pagos</option><option value="todos">Todos</option></select>
+      <div id="adLista"></div>
+    </div>
   </div>
 </div>
 
@@ -769,17 +892,38 @@ const PIX_KEY_TXT = '21995117813';     // como a chave aparece para o cliente
 const PIX_NOME   = 'THEOSIS COMPANY';  // até 25 caracteres
 const PIX_CIDADE = 'RIO DE JANEIRO';   // até 15 caracteres
 
-/* ---------- Supabase (REST nativo, sem biblioteca) ---------- */
-async function rpc(fn, args){
-  const r = await fetch(SUPABASE_URL + '/rest/v1/rpc/' + fn, {
-    method:'POST',
-    headers:{ apikey:SUPABASE_KEY, 'Content-Type':'application/json' },
-    body:JSON.stringify(args || {})
+/* ---------- Sessão e Supabase (REST nativo, sem biblioteca) ---------- */
+const SESSAO_KEY = 'tc_sessao';
+let sessao = null;
+try{ sessao = JSON.parse(localStorage.getItem(SESSAO_KEY)); }catch(e){}
+let souAdmin = false;
+
+async function chamar(url, body, token, metodo){
+  const r = await fetch(SUPABASE_URL + url, {
+    method:metodo || 'POST',
+    headers:Object.assign({ apikey:SUPABASE_KEY, 'Content-Type':'application/json' }, token ? { Authorization:'Bearer ' + token } : {}),
+    body:JSON.stringify(body || {})
   });
   const j = await r.json().catch(() => null);
-  if(!r.ok) throw new Error((j && j.message) || 'erro ' + r.status);
+  if(!r.ok) throw new Error((j && (j.msg || j.error_description || j.message)) || 'erro ' + r.status);
   return j;
 }
+const authApi = (path, body, token, metodo) => chamar('/auth/v1/' + path, body, token, metodo);
+
+function guardarSessao(x){
+  sessao = x ? { access_token:x.access_token, refresh_token:x.refresh_token, expires_at:Date.now() + (x.expires_in || 3600) * 1000, user:x.user } : null;
+  try{ sessao ? localStorage.setItem(SESSAO_KEY, JSON.stringify(sessao)) : localStorage.removeItem(SESSAO_KEY); }catch(e){}
+  atualizarConta();
+}
+async function tokenValido(){
+  if(!sessao) return null;
+  if(Date.now() > sessao.expires_at - 60000){
+    try{ guardarSessao(await authApi('token?grant_type=refresh_token', { refresh_token:sessao.refresh_token })); }
+    catch(e){ guardarSessao(null); return null; }
+  }
+  return sessao.access_token;
+}
+async function rpc(fn, args){ return chamar('/rest/v1/rpc/' + fn, args, await tokenValido()); }
 
 /* p.stock: null = ainda consultando / indisponível; 0 = esgotado */
 async function loadStock(){
@@ -997,85 +1141,332 @@ function pixPayload(valor, txid){
 
 const pixModal = document.getElementById('pixModal');
 const pixPending = document.getElementById('pixPending');
-const PEDIDO_KEY = 'tc_pedido_pendente';   // só o id do pedido; total e status vêm sempre do servidor
-let pedidoAtual = null;                     // { pedido_id, total } enquanto houver Pix pendente
-function lembrarPedido(id){ try{ id ? localStorage.setItem(PEDIDO_KEY, id) : localStorage.removeItem(PEDIDO_KEY); }catch(e){} }
+let pedidoAtual = null;   // { pedido_id, total, itens } enquanto houver Pix pendente
 function closePix(){
   pixModal.classList.remove('open');
   pixPending.classList.toggle('show', !!pedidoAtual);
 }
-document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closePix(); });
 document.getElementById('pixClose').addEventListener('click', () => {
   closePix(); showToast('Reserva mantida por 30 min. Use "Pix pendente" para voltar');
 });
 pixPending.addEventListener('click', () => showPix(pedidoAtual));
 
-/* Confere no servidor se o Pix pendente (deste navegador) continua ativo. */
+function esc(t){ return String(t).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c])); }
+function fmtTel(t){
+  const d = String(t).replace(/\D/g, '');
+  return d.length === 11 ? '(' + d.slice(0,2) + ') ' + d.slice(2,7) + '-' + d.slice(7)
+       : d.length === 10 ? '(' + d.slice(0,2) + ') ' + d.slice(2,6) + '-' + d.slice(6) : d;
+}
+function nomeProduto(sku){ const p = PRODUCTS.find(x => x.sku === sku); return p ? p.name : 'Item ' + sku; }
+function resumoItens(itens){ return itens.map(i => i.qtd + '× ' + nomeProduto(i.sku)).join(', '); }
+function meta(){ return (sessao && sessao.user && sessao.user.user_metadata) || {}; }
+
+/* Confere no servidor o pedido mais recente da conta: reabre o Pix pendente e avisa quando muda. */
 async function checarPedido(){
-  let id = null;
-  try{ id = localStorage.getItem(PEDIDO_KEY); }catch(e){}
-  if(!id) return;
+  if(!sessao) return;
   try{
-    const [o] = await rpc('ver_pedido', { p_id:id });
+    const [o] = await rpc('meu_pedido');
     if(o && o.status === 'pendente'){
-      const novo = !pedidoAtual;
-      pedidoAtual = { pedido_id:id, total:Number(o.total) };
-      if(novo) closePix();   // só mostra o botão; não abre a janela sozinho
+      pedidoAtual = { pedido_id:o.pedido_id, total:Number(o.total), itens:o.itens };
+      if(!pixModal.classList.contains('open')) closePix();   // só mostra o botão; não abre a janela sozinho
       return;
     }
-    if(o && o.status === 'pago') showToast('Pagamento confirmado! Obrigado');
-    else if(o) showToast('Seu Pix pendente expirou ou foi cancelado');
-    pedidoAtual = null; lembrarPedido(null); closePix();
+    if(pedidoAtual){
+      showToast(o && o.status === 'pago' ? 'Pagamento confirmado! Obrigado' : 'Seu Pix pendente expirou ou foi cancelado');
+      pedidoAtual = null; closePix();
+    }
   }catch(e){ /* sem rede: tenta de novo no próximo ciclo */ }
 }
 
 function showPix(o){
-  pedidoAtual = { pedido_id:o.pedido_id, total:Number(o.total) };
-  lembrarPedido(o.pedido_id);
+  pedidoAtual = { pedido_id:o.pedido_id, total:Number(o.total), itens:o.itens };
   pixPending.classList.remove('show');
   const code = pixPayload(Number(o.total), o.pedido_id.replace(/-/g, '').slice(0, 25));
   const qr = qrcode(0, 'M');
   qr.addData(code);
   qr.make();
+  const total = brl(Number(o.total));
   document.getElementById('pixQr').innerHTML = qr.createSvgTag({ cellSize:4, margin:2, scalable:true });
-  document.getElementById('pixTotal').textContent = brl(Number(o.total));
+  document.getElementById('pixTotal').textContent = total;
+  document.getElementById('pixSumTotal').textContent = total;
+  document.getElementById('pixItems').innerHTML = o.itens.map(i => {
+    const p = PRODUCTS.find(x => x.sku === i.sku);
+    return '<li><span>' + i.qtd + '× ' + esc(nomeProduto(i.sku)) + '</span><span>' + (p ? brl(p.price * i.qtd) : '') + '</span></li>';
+  }).join('');
+  const m = meta();
+  document.getElementById('pixCliente').textContent = [m.nome && 'Cliente: ' + m.nome, m.telefone && 'WhatsApp ' + fmtTel(m.telefone)].filter(Boolean).join(' · ');
   document.getElementById('pixCode').value = code;
   document.getElementById('pixKey').textContent = PIX_KEY_TXT;
   document.getElementById('pixOrder').textContent = '#' + o.pedido_id.slice(0, 8).toUpperCase();
   pixModal.classList.add('open');
 }
 
-document.getElementById('pixCopy').addEventListener('click', async () => {
-  const input = document.getElementById('pixCode');
-  try{ await navigator.clipboard.writeText(input.value); }
-  catch(e){ input.select(); document.execCommand('copy'); }
-  showToast('Código Pix copiado');
-});
-
-document.getElementById('pixKeyCopy').addEventListener('click', async () => {
-  try{ await navigator.clipboard.writeText(PIX_KEY_TXT); }
-  catch(e){ const t = document.createElement('textarea'); t.value = PIX_KEY_TXT; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
-  showToast('Chave Pix copiada');
-});
+async function copiar(texto, aviso){
+  try{ await navigator.clipboard.writeText(texto); }
+  catch(e){ const t = document.createElement('textarea'); t.value = texto; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
+  showToast(aviso);
+}
+document.getElementById('pixCopy').addEventListener('click', () => copiar(document.getElementById('pixCode').value, 'Código Pix copiado'));
+document.getElementById('pixKeyCopy').addEventListener('click', () => copiar(PIX_KEY_TXT, 'Chave Pix copiada'));
 
 document.getElementById('pixCancel').addEventListener('click', async () => {
   try{
     await rpc('cancelar_pedido', { p_id:pedidoAtual.pedido_id });
-    pedidoAtual = null; lembrarPedido(null);
+    pedidoAtual = null;
     showToast('Pedido cancelado');
   }catch(e){ showToast('Não foi possível cancelar agora'); }
   closePix();
   loadStock();
 });
 
-/* Finalizar compra = reservar estoque no servidor (atômico) + gerar Pix.
-   ponytail: o pagamento é confirmado manualmente (status 'pago' no Supabase); automatizar com webhook de um PSP se o volume crescer. */
+/* ---------- Conta: cadastro e login com código por e-mail (2º fator) ---------- */
+const authModal = document.getElementById('authModal');
+const authErrEl = document.getElementById('authErr');
+const accountBtn = document.getElementById('accountBtn');
+let emailPendente = '';
+
+function authErr(m){ authErrEl.textContent = m || ''; }
+function authView(v){
+  ['Login', 'Cadastro', 'Codigo', 'Conta', 'Esqueci', 'Redefinir'].forEach(n => document.getElementById('v' + n).classList.toggle('on', n.toLowerCase() === v));
+  document.getElementById('authTitle').textContent = { login:'Entrar', cadastro:'Criar conta', codigo:'Verificação por e-mail', conta:'Minha conta', esqueci:'Esqueci minha senha', redefinir:'Nova senha' }[v];
+  authErr('');
+}
+function abrirAuth(v){ authView(v || (sessao ? 'conta' : 'login')); authModal.classList.add('open'); }
+function fecharAuth(){ authModal.classList.remove('open'); }
+function ocupado(form, on){ form.querySelector('button[type=submit]').disabled = on; }
+function traduzir(m){
+  if(/invalid login|invalid credentials/i.test(m)) return 'E-mail ou senha incorretos.';
+  if(/already registered|already been registered/i.test(m)) return 'Este e-mail já tem conta. Use "Entrar".';
+  if(/not confirmed/i.test(m)) return 'Confirme seu e-mail antes de entrar.';
+  if(/expired|invalid/i.test(m)) return 'Código inválido ou expirado. Peça um novo.';
+  if(/rate limit|too many|seconds/i.test(m)) return 'Muitas tentativas. Aguarde um instante e tente de novo.';
+  if(/different from the old/i.test(m)) return 'Escolha uma senha diferente da anterior.';
+  if(/password/i.test(m)) return 'A senha precisa ter ao menos 8 caracteres.';
+  return 'Não foi possível concluir. Tente novamente.';
+}
+function claims(){
+  try{ return JSON.parse(atob(sessao.access_token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))); }catch(e){ return {}; }
+}
+
+function atualizarConta(){
+  accountBtn.classList.toggle('logged', !!sessao);
+  accountBtn.title = sessao ? 'Minha conta' : 'Entrar';
+  if(sessao){
+    const m = meta();
+    document.getElementById('aNome').textContent = m.nome || sessao.user.email;
+    document.getElementById('aInfo').textContent = sessao.user.email + (m.telefone ? ' · WhatsApp ' + fmtTel(m.telefone) : '');
+  }
+  document.getElementById('aAdmin').hidden = !souAdmin;
+}
+async function checarAdmin(){
+  souAdmin = false;
+  if(sessao){ try{ souAdmin = (await rpc('sou_admin')) === true; }catch(e){} }
+  atualizarConta();
+}
+
+accountBtn.addEventListener('click', () => abrirAuth());
+document.getElementById('authClose').addEventListener('click', fecharAuth);
+document.querySelectorAll('[data-auth]').forEach(a => a.addEventListener('click', (e) => {
+  e.preventDefault();
+  authView(a.dataset.auth);
+  if(a.dataset.auth === 'esqueci') document.getElementById('eEmail').value = document.getElementById('lEmail').value;
+}));
+
+document.getElementById('vCadastro').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const tel = document.getElementById('cTel').value.replace(/\D/g, '');
+  const email = document.getElementById('cEmail').value.trim().toLowerCase();
+  if(tel.length < 10 || tel.length > 11){ authErr('Informe o WhatsApp com DDD, ex.: (21) 99999-9999'); return; }
+  ocupado(f, true); authErr('');
+  try{
+    const j = await authApi('signup', { email, password:document.getElementById('cSenha').value, data:{ nome:document.getElementById('cNome').value.trim(), telefone:tel } });
+    if(j && j.access_token) authApi('logout?scope=local', {}, j.access_token).catch(() => {});   // o acesso só vale depois do código do e-mail
+    document.getElementById('lEmail').value = email;
+    document.getElementById('lSenha').value = '';
+    authView('login');
+    showToast('Conta criada! Entre para continuar');
+  }catch(err){ authErr(traduzir(err.message)); }
+  ocupado(f, false);
+});
+
+async function enviarCodigo(email){ await authApi('otp', { email, create_user:false }); }
+
+/* Passo 1: confere a senha (a sessão desse passo é descartada) e manda o código para o e-mail. */
+document.getElementById('vLogin').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const email = document.getElementById('lEmail').value.trim().toLowerCase();
+  ocupado(f, true); authErr('');
+  try{
+    const a = await authApi('token?grant_type=password', { email, password:document.getElementById('lSenha').value });
+    authApi('logout?scope=local', {}, a.access_token).catch(() => {});
+    await enviarCodigo(email);
+    emailPendente = email;
+    document.getElementById('cDica').textContent = 'Enviamos um código para ' + email + '. Digite abaixo para entrar.';
+    document.getElementById('cCodigo').value = '';
+    authView('codigo');
+    document.getElementById('cCodigo').focus();
+  }catch(err){ authErr(traduzir(err.message)); }
+  ocupado(f, false);
+});
+
+/* Passo 2: o código do e-mail cria a sessão final. */
+document.getElementById('vCodigo').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  ocupado(f, true); authErr('');
+  try{
+    guardarSessao(await authApi('verify', { type:'email', email:emailPendente, token:document.getElementById('cCodigo').value.trim() }));
+    document.getElementById('lSenha').value = '';
+    await checarAdmin();
+    checarPedido();
+    if(claims().tc_mfa !== true){
+      authView('conta');
+      authErr('Você entrou, mas o servidor não confirmou a verificação em 2 etapas. Ative o hook do token no Supabase (passo a passo no fim do supabase.sql). Enquanto isso, as compras ficam bloqueadas.');
+    }else{
+      fecharAuth();
+      showToast('Bem-vindo, ' + (meta().nome || '').split(' ')[0] + '!');
+    }
+  }catch(err){ authErr(traduzir(err.message)); }
+  ocupado(f, false);
+});
+document.getElementById('cReenviar').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try{ await enviarCodigo(emailPendente); showToast('Código reenviado'); }
+  catch(err){ authErr(traduzir(err.message)); }
+});
+
+/* Esqueci a senha: código por e-mail -> nova senha. A sessão de recuperação nunca é guardada:
+   ela é encerrada em TODOS os aparelhos (derruba quem tivesse a sessão roubada) e o login normal, com 2º fator, é refeito. */
+document.getElementById('vEsqueci').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const email = document.getElementById('eEmail').value.trim().toLowerCase();
+  ocupado(f, true); authErr('');
+  try{
+    await authApi('recover', { email });
+    emailPendente = email;
+    document.getElementById('rDica').textContent = 'Se existir uma conta para ' + email + ', enviamos um código para esse e-mail. Digite-o abaixo com a nova senha.';
+    ['rCodigo', 'rSenha', 'rSenha2'].forEach(id => { document.getElementById(id).value = ''; });
+    authView('redefinir');
+    document.getElementById('rCodigo').focus();
+  }catch(err){ authErr(traduzir(err.message)); }
+  ocupado(f, false);
+});
+document.getElementById('vRedefinir').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const f = e.currentTarget;
+  const nova = document.getElementById('rSenha').value;
+  if(nova !== document.getElementById('rSenha2').value){ authErr('As senhas não conferem.'); return; }
+  ocupado(f, true); authErr('');
+  try{
+    const j = await authApi('verify', { type:'recovery', email:emailPendente, token:document.getElementById('rCodigo').value.trim() });
+    try{ await authApi('user', { password:nova }, j.access_token, 'PUT'); }
+    finally{ authApi('logout?scope=global', {}, j.access_token).catch(() => {}); }
+    document.getElementById('lEmail').value = emailPendente;
+    document.getElementById('lSenha').value = '';
+    authView('login');
+    showToast('Senha alterada! Entre com a nova senha');
+  }catch(err){ authErr(traduzir(err.message)); }
+  ocupado(f, false);
+});
+document.getElementById('rReenviar').addEventListener('click', async (e) => {
+  e.preventDefault();
+  try{ await authApi('recover', { email:emailPendente }); showToast('Código reenviado'); }
+  catch(err){ authErr(traduzir(err.message)); }
+});
+
+document.getElementById('aSair').addEventListener('click', () => {
+  if(sessao) authApi('logout?scope=local', {}, sessao.access_token).catch(() => {});
+  guardarSessao(null);
+  souAdmin = false; pedidoAtual = null;
+  atualizarConta(); closePix(); fecharAuth(); fecharAdmin();
+  showToast('Você saiu da conta');
+});
+
+/* ---------- Painel do dono (o servidor só obedece se a conta for admin com 2º fator) ---------- */
+const adminModal = document.getElementById('adminModal');
+const adEstoque = document.getElementById('adEstoque');
+const adPedidos = document.getElementById('adPedidos');
+const adLista = document.getElementById('adLista');
+const adFiltro = document.getElementById('adFiltro');
+function fecharAdmin(){ adminModal.classList.remove('open'); }
+function abrirAdmin(){ fecharAuth(); adminModal.classList.add('open'); renderAdminEstoque(); }
+
+function renderAdminEstoque(){
+  adEstoque.innerHTML = PRODUCTS.map(p =>
+    '<div class="ad-row"><div class="ad-name">' + esc(p.name) + '<small>Em estoque: <b>' + (p.stock === null ? '—' : p.stock) + '</b></small></div>' +
+    '<input type="number" step="1" placeholder="+10" data-sku="' + p.sku + '" aria-label="Quantidade para ' + esc(p.name) + '">' +
+    '<button class="btn btn--solid" type="button" data-ajustar="' + p.sku + '">Aplicar</button></div>'
+  ).join('');
+}
+adEstoque.addEventListener('click', async (e) => {
+  const b = e.target.closest('[data-ajustar]');
+  if(!b) return;
+  const sku = Number(b.dataset.ajustar);
+  const delta = parseInt(adEstoque.querySelector('input[data-sku="' + sku + '"]').value, 10);
+  if(!delta){ showToast('Digite a quantidade (ex.: 10 para somar, -2 para tirar)'); return; }
+  b.disabled = true;
+  try{
+    await rpc('admin_ajustar_estoque', { p_sku:sku, p_delta:delta });
+    showToast('Estoque atualizado');
+    await loadStock();
+  }catch(err){ showToast(/estoque_invalido/.test(err.message) ? 'O estoque não pode ficar negativo' : 'Não foi possível atualizar'); }
+  renderAdminEstoque();
+});
+
+async function renderAdminPedidos(){
+  adLista.textContent = 'Carregando…';
+  try{
+    const rows = await rpc('admin_pedidos', { p_status:adFiltro.value });
+    adLista.innerHTML = rows.length ? rows.map(o => {
+      const quando = new Date(o.criado_em).toLocaleString('pt-BR', { day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' });
+      const acoes = o.status === 'pago' ? '' :
+        '<button class="btn btn--solid" type="button" data-confirmar="' + o.pedido_id + '">Confirmar pagamento</button>' +
+        (o.status === 'pendente' ? '<button class="btn btn--ghost" type="button" data-cancelar="' + o.pedido_id + '">Cancelar</button>' : '');
+      return '<div class="ad-order"><div><b>#' + o.pedido_id.slice(0, 8).toUpperCase() + '</b> · ' + esc(o.status) + ' · ' + quando + '</div>' +
+        '<div>' + esc(o.nome || '') + ' · ' + esc(fmtTel(o.telefone || '')) + '</div><div>' + esc(resumoItens(o.itens)) + '</div>' +
+        '<div class="ad-total">' + brl(Number(o.total)) + '</div><div class="ad-actions">' + acoes + '</div></div>';
+    }).join('') : '<p class="auth-note">Nenhum pedido.</p>';
+  }catch(err){ adLista.textContent = 'Não foi possível carregar os pedidos.'; }
+}
+adLista.addEventListener('click', async (e) => {
+  const c = e.target.closest('[data-confirmar]'), x = e.target.closest('[data-cancelar]');
+  if(!c && !x) return;
+  if(c && !confirm('Confirmar que o Pix deste pedido já caiu na sua conta?')) return;
+  try{
+    if(c){ await rpc('admin_confirmar_pedido', { p_id:c.dataset.confirmar }); showToast('Pagamento confirmado'); }
+    else{ await rpc('cancelar_pedido', { p_id:x.dataset.cancelar }); showToast('Pedido cancelado'); }
+    await loadStock();
+  }catch(err){ showToast(/estoque_insuficiente/.test(err.message) ? 'Essa peça já foi vendida: reponha o estoque primeiro' : 'Não foi possível concluir'); }
+  renderAdminPedidos();
+});
+adFiltro.addEventListener('change', renderAdminPedidos);
+document.querySelectorAll('.admin-tabs button').forEach(t => t.addEventListener('click', () => {
+  document.querySelectorAll('.admin-tabs button').forEach(x => x.classList.toggle('on', x === t));
+  adEstoque.hidden = t.dataset.tab !== 'estoque';
+  adPedidos.hidden = t.dataset.tab !== 'pedidos';
+  if(t.dataset.tab === 'pedidos') renderAdminPedidos(); else renderAdminEstoque();
+}));
+document.getElementById('aAdmin').addEventListener('click', abrirAdmin);
+document.getElementById('adminClose').addEventListener('click', fecharAdmin);
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape'){ closePix(); fecharAuth(); fecharAdmin(); } });
+
+/* ---------- Finalizar compra = reservar estoque no servidor (atômico) + gerar Pix ----------
+   ponytail: o pagamento é confirmado pelo dono no Painel (aba Pedidos); automatizar com webhook de um PSP se o volume crescer. */
+function erroCompra(m){
+  if(/estoque_insuficiente/.test(m)) return 'Um item acabou — estoque atualizado';
+  if(/nao_autenticado/.test(m)) return 'Entre de novo com o código do e-mail para comprar';
+  if(/telefone_invalido/.test(m)) return 'Seu cadastro está sem WhatsApp válido. Crie a conta de novo';
+  return 'Não foi possível gerar o Pix. Tente novamente';
+}
 let comprando = false;
 const checkoutBtn = document.getElementById('bagCheckout');
 checkoutBtn.addEventListener('click', async () => {
   if(cart.length === 0 || comprando) return;
+  if(!sessao){ closeBag(); abrirAuth('login'); showToast('Entre na sua conta para finalizar a compra'); return; }
   if(pedidoAtual){ closeBag(); showPix(pedidoAtual); showToast('Você já tem um Pix pendente. Pague ou cancele antes'); return; }
-  if(!PIX_KEY){ showToast('Configure a chave Pix no código (PIX_KEY)'); return; }
   comprando = true;
   checkoutBtn.disabled = true;
   checkoutBtn.textContent = 'Gerando Pix…';
@@ -1085,7 +1476,11 @@ checkoutBtn.addEventListener('click', async () => {
     closeBag();
     showPix(o);
   }catch(e){
-    showToast(/estoque_insuficiente/.test(e.message) ? 'Um item acabou — estoque atualizado' : 'Não foi possível gerar o Pix. Tente novamente');
+    if(/pedido_pendente/.test(e.message)){
+      await checarPedido();
+      if(pedidoAtual){ closeBag(); showPix(pedidoAtual); }
+      showToast('Você já tem um Pix pendente. Pague ou cancele antes');
+    }else showToast(erroCompra(e.message));
   }
   comprando = false;
   checkoutBtn.textContent = 'Finalizar compra';
@@ -1204,7 +1599,9 @@ goToSlide(0);
 startAutoplay();
 
 /* ---------- Estoque ao vivo ---------- */
+atualizarConta();
 loadStock();
+checarAdmin();
 checarPedido();
 setInterval(() => { loadStock(); checarPedido(); }, 30000);
 </script>
