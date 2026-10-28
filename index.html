@@ -364,6 +364,54 @@
   .pix-copy{ display:flex; margin-top:14px; border:1.5px solid var(--charcoal); }
   .pix-copy input{ flex:1; min-width:0; border:none; background:none; padding:0 10px; font-size:12px; color:var(--charcoal); }
   .pix-copy .btn{ padding:12px 18px; border-radius:0; border:none; }
+  .account-btn.logged::after{ content:""; position:absolute; top:3px; right:3px; width:9px; height:9px; border-radius:50%; background:#2E9B57; border:2px solid var(--paper); }
+  .auth-overlay{ position:fixed; inset:0; z-index:310; background:rgba(37,37,37,.6); display:none; align-items:center; justify-content:center; padding:20px; }
+  .auth-overlay.open{ display:flex; }
+  .auth-box{ position:relative; background:var(--paper); width:400px; max-width:100%; max-height:100%; overflow-y:auto; padding:30px 26px 24px; border-radius:2px; }
+  .admin-box{ width:720px; }
+  .auth-x{ position:absolute; top:12px; right:12px; }
+  .auth-box h3{ font-family:var(--font-display); text-transform:uppercase; font-size:22px; letter-spacing:.03em; margin-bottom:14px; }
+  .auth-view{ display:none; flex-direction:column; gap:12px; }
+  .auth-view.on{ display:flex; }
+  .auth-view label{ display:flex; flex-direction:column; gap:5px; font-size:12px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--charcoal-soft); }
+  .auth-view input{ width:100%; min-width:0; box-sizing:border-box; border:1.5px solid var(--charcoal); padding:12px; font-size:15px; font-family:inherit; color:var(--charcoal); background:#fff; text-transform:none; letter-spacing:0; font-weight:400; }
+  .auth-view .btn{ justify-content:center; }
+  .auth-view .btn:disabled{ opacity:.6; }
+  .auth-err{ color:#C62828; font-size:13px; line-height:1.45; margin-bottom:10px; }
+  .auth-err:empty{ display:none; }
+  .auth-note{ font-size:12.5px; color:var(--charcoal-soft); line-height:1.5; }
+  .auth-alt{ font-size:13px; text-align:center; color:var(--charcoal-soft); }
+  .auth-alt a{ color:var(--charcoal); text-decoration:underline; }
+  .auth-sub{ font-family:var(--font-display); text-transform:uppercase; font-size:15px; letter-spacing:.04em; margin-top:6px; }
+  .auth-row{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:12px; }
+  .auth-row.uf{ grid-template-columns:minmax(0,1fr) 90px; }
+  .admin-tabs{ display:flex; gap:8px; margin-bottom:14px; }
+  .admin-tabs button{ border:1.5px solid var(--charcoal); background:none; padding:9px 16px; font-weight:700; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--charcoal); }
+  .admin-tabs button.on{ background:var(--charcoal); color:var(--paper); }
+  .ad-row{ display:flex; align-items:center; gap:10px; padding:10px 0; border-bottom:1px solid var(--charcoal-14); }
+  .ad-name{ flex:1; font-size:14px; font-weight:600; }
+  .ad-name small{ display:block; font-weight:400; color:var(--charcoal-soft); font-size:12px; margin-top:2px; }
+  .ad-row input{ width:90px; border:1.5px solid var(--charcoal); padding:9px; font-size:14px; }
+  .ad-row .btn, .ad-actions .btn{ padding:10px 14px; font-size:12px; }
+  #adFiltro{ border:1.5px solid var(--charcoal); padding:9px; margin-bottom:12px; font-size:14px; background:#fff; }
+  .ad-order{ border:1px solid var(--charcoal-14); padding:12px; margin-bottom:10px; font-size:13.5px; line-height:1.55; }
+  .ad-total{ font-weight:800; font-size:16px; margin-top:4px; }
+  .ad-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+  .pix-grid{ display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+  .pix-summary{ text-align:left; border-left:1px solid var(--charcoal-14); padding-left:28px; }
+  .pix-summary h4{ font-family:var(--font-display); text-transform:uppercase; font-size:18px; letter-spacing:.03em; }
+  .pix-items{ list-style:none; padding:0; margin:12px 0 0; }
+  .pix-items li{ display:flex; justify-content:space-between; gap:12px; font-size:14px; padding:9px 0; border-bottom:1px solid var(--charcoal-14); }
+  .pix-sum-total{ display:flex; justify-content:space-between; font-size:18px; margin-top:12px; }
+  .pix-cliente{ font-size:13px; color:var(--charcoal-soft); margin-top:14px; line-height:1.5; }
+  .pix-summary .pix-meta, .pix-summary .pix-cancel{ display:block; text-align:left; padding:0; }
+  @media (max-width:720px){
+    .pix-grid{ grid-template-columns:1fr; gap:20px; }
+    .pix-summary{ border-left:none; padding-left:0; border-top:1px solid var(--charcoal-14); padding-top:18px; }
+  }
+  .account-btn.oculto{ display:none !important; }
+  .pix-pending{ display:none; position:fixed; left:16px; bottom:16px; z-index:250; background:var(--charcoal); color:var(--paper); border:none; padding:13px 18px; font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; box-shadow:0 6px 20px rgba(0,0,0,.3); }
+  .pix-pending.show{ display:block; }
   .pix-meta{ font-size:12px; color:var(--charcoal-soft); margin-top:14px; }
   .pix-cancel{ background:none; border:none; color:var(--charcoal-soft); font-size:12px; text-decoration:underline; margin-top:10px; }
   .pix-cancel:hover{ color:var(--charcoal); }
@@ -667,7 +715,6 @@
   <div class="footer-bottom">
     <div class="wrap">
       <span>© 2026 Theosis Company. Todos os direitos reservados.</span>
-      <span>CNPJ 00.000.000/0001-00 · Site meramente ilustrativo</span>
     </div>
   </div>
 </footer>
@@ -849,9 +896,9 @@ const menorPreco = (p) => Math.min(p.precos.oversized, p.precos.padrao);
 const PRODUCTS = [
   { name:'Camiseta Essence',      cat:'Masculino', garment:'tee',     tone:'light', precos:{ oversized:85.00, padrao:65.00 }, rating:4.9, reviews:212, sku:1, images:{ front: ESSENCE_FRONT_IMG, back: ESSENCE_BACK_IMG } },
   { name:'Camiseta Union',  cat:'Masculino', garment:'tee',     tone:'dark',  precos:{ oversized:80.00, padrao:60.00 }, rating:4.8, reviews:98, sku:2, images:{ front: MASC_VERT_BRANCA_IMG, back: MASC_VERT_BRANCA_IMG } },
-  { name:'Camiseta Theosis Branca', cat:'Masculino', garment:'tee', tone:'light', precos:{ oversized:80.00, padrao:60.00 }, rating:0, reviews:0, sku:10, images:{ front: BRANCA_COSTAS_IMG, back: BRANCA_COSTAS_IMG } },
+  { name:'Camiseta Theosis Branca', cat:'Masculino', garment:'tee', tone:'light', precos:{ oversized:85.00, padrao:65.00 }, rating:0, reviews:0, sku:10, images:{ front: BRANCA_COSTAS_IMG, back: BRANCA_COSTAS_IMG } },
   { name:'Camiseta Grace',        cat:'Feminino',  garment:'longline',tone:'light', precos:{ oversized:85.00, padrao:65.00 }, rating:4.9, reviews:176, sku:4, images:{ front: FEM_PRETA_FRENTE_IMG, back: FEM_PRETA_COSTAS_IMG } },
-  { name:'Camiseta Devotion',  cat:'Feminino',  garment:'tee',     tone:'light', precos:{ oversized:80.00, padrao:60.00 }, rating:4.8, reviews:87, sku:5, images:{ front: FEM_BRANCA_FRENTE_IMG, back: FEM_BRANCA_COSTAS_IMG } },
+  { name:'Camiseta Devotion',  cat:'Feminino',  garment:'tee',     tone:'light', precos:{ oversized:85.00, padrao:65.00 }, rating:4.8, reviews:87, sku:5, images:{ front: FEM_BRANCA_FRENTE_IMG, back: FEM_BRANCA_COSTAS_IMG } },
   { name:'Camiseta Serenity',     cat:'Feminino',  garment:'tee',     tone:'dark',  precos:{ oversized:80.00, padrao:60.00 }, rating:5.0, reviews:203, sku:6, images:{ front: FEM_VERT_BRANCA_IMG, back: FEM_VERT_PRETA_IMG } },
 ];
 
